@@ -3,22 +3,18 @@ import subprocess
 import sys
 import os
 
-
 indent = "|   "
 indent_done = "    "
 child_branch = "|-- "
 child_branch_done = "`-- "
 count_dir = 0
 count_files = 0
-def print_tree(dir_path,offset):
+
+def print_tree(dir_path, offset):
     global count_dir
     global count_files
-    all_children = os.listdir(dir_path)
-    children = []
-    for x in all_children:
-        if x[0] != '.':
-            children.append(x)
-    children = sorted(children, key=lambda s: s.strip('_').lower())
+    all_children = [cont for cont in os.listdir(dir_path) if not cont.startswith('.')]
+    children = sorted(all_children, key=lambda s: s.strip('_').lower())
     i = 0
     end_flag = 0
     for child in children:
@@ -38,17 +34,16 @@ def print_tree(dir_path,offset):
             count_files += 1
         i += 1
 if __name__ == '__main__':
-	dir_path = "."
-	count_dir = 0
-	count_files = 0
-	if(len(sys.argv) == 2):
-		dir_path = sys.argv[1]
-	if(len(sys.argv) > 2):
-		print("Invalid data")
-		sys.exit()
-	print(dir_path)
-	print_tree(dir_path,"") 
-	print()
-	final_str = str(count_dir) + " directories, "+ str(count_files) + " files"
-	print(final_str)
-
+    dir_path = "."
+    count_dir = 0
+    count_files = 0
+    if(len(sys.argv) == 2):
+        dir_path = sys.argv[1]
+    if(len(sys.argv) > 2):
+        print("Invalid data")
+        sys.exit()
+    print(dir_path)
+    print_tree(dir_path, "") 
+    print()
+    final_str = str(count_dir) + " directories, " + str(count_files) + " files"
+    print(final_str)
