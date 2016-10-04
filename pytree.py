@@ -3,10 +3,10 @@ import subprocess
 import sys
 import os
 
-indent = "\u2502\u00A0\u00A0\u00A0"
-indent_done = "\u00A0\u00A0\u00A0\u00A0"
-child_branch = "\u251C\u2574\u2574\u00A0"
-child_branch_done = "\u2514\u2574\u2574\u00A0"
+indent = "│   "
+indent_done = "    "
+child_branch = "├── "
+child_branch_done = "└── "
 count_dir = 0
 count_files = 0
 
