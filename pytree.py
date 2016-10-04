@@ -11,10 +11,12 @@ count_dir = 0
 count_files = 0
 
 
+#sorting searately to reduce complexity
 def sort_children(all_children):
     return sorted(all_children, key=lambda s: s.strip('_').lower())
 
 
+#printing tree recurcively
 def print_tree(dir_path, offset):
 
     global count_dir
